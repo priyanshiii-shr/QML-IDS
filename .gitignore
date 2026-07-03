@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Data — raw NSL-KDD files (large, download separately)
+data/raw/KDDTrain+.txt
+data/raw/KDDTest+.txt
+data/processed/
+
+# Models (large binary files — commit selectively for deployment)
+# Uncomment to exclude:
+# results/models/random_forest.joblib
+
+# Logs
+*.log

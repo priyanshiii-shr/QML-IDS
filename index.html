@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QML-IDS | Quantum Intrusion Detection System</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- App Shell Layout -->
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="app-sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-logo">⚛️</span>
+                <div class="brand-text">
+                    <h3>QML-IDS</h3>
+                    <p>Quantum Network Security</p>
+                </div>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <button class="menu-item active" onclick="switchTab('home')">
+                    <i class="fa-solid fa-house"></i> <span>Home</span>
+                </button>
+                <button class="menu-item" onclick="switchTab('dataset')">
+                    <i class="fa-solid fa-chart-pie"></i> <span>Dataset Explorer</span>
+                </button>
+                <button class="menu-item" onclick="switchTab('results')">
+                    <i class="fa-solid fa-chart-line"></i> <span>Model Results</span>
+                </button>
+                <button class="menu-item" onclick="switchTab('predict')">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Live Prediction</span>
+                </button>
+                <button class="menu-item" onclick="switchTab('about')">
+                    <i class="fa-solid fa-book-open"></i> <span>About</span>
+                </button>
+            </nav>
+            
+            <div class="sidebar-status">
+                <div class="status-title">System Health</div>
+                <div class="status-indicator">
+                    <span class="pulse-dot green"></span>
+                    <span class="status-label">API Ready (Vercel)</span>
+                </div>
+                <div class="status-indicator">
+                    <span class="pulse-dot green"></span>
+                    <span class="status-label">RF Classifier Loaded</span>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Application Area -->
+        <main class="app-main">
+            
+            <!-- 🏠 HOME VIEW -->
+            <section id="view-home" class="tab-view active">
+                <div class="hero-banner">
+                    <h1 class="glitch-text">Quantum-Classical Intrusion Detection</h1>
+                    <p>Benchmarking Classical Random Forest vs. Quantum Variational Classifier (VQC) on NSL-KDD IoT traffic.</p>
+                    <div class="badges-row">
+                        <span class="badge blue">PennyLane VQC</span>
+                        <span class="badge purple">Random Forest Baseline</span>
+                        <span class="badge green">NSL-KDD Dataset</span>
+                        <span class="badge pink">FastAPI Backend</span>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">125,973</div>
+                        <div class="stat-label">Training Traffic Rows</div>
+                        <div class="stat-sub">NSL-KDD benchmark dataset</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Qubits Used</div>
+                        <div class="stat-sub">Angle embedding + SEL layers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">122</div>
+                        <div class="stat-label">One-Hot Features</div>
+                        <div class="stat-sub">Post category engineering</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">72</div>
+                        <div class="stat-label">Quantum Parameters</div>
+                        <div class="stat-sub">Trainable rotation angles</div>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <h2>Pipeline Framework</h2>
+                    <p>The 7-step data loading, reduction, modeling, and evaluation flow</p>
+                </div>
+                
+                <div class="pipeline-flow">
+                    <div class="flow-step">
+                        <div class="step-num">1</div>
+                        <div class="step-name">Data Loading</div>
+                        <div class="step-desc">Official NSL-KDD parsing</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-num">2</div>
+                        <div class="step-name">Preprocessing</div>
+                        <div class="step-desc">Standard scaling & labels</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-num">3</div>
+                        <div class="step-name">Classical RF</div>
+                        <div class="step-desc">200 estimator trees baseline</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-num">4</div>
+                        <div class="step-name">PCA Compression</div>
+                        <div class="step-desc">122 components → 8 variables</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-num">5</div>
+                        <div class="step-name">PennyLane VQC</div>
+                        <div class="step-desc">Simulated qubit optimization</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-num">6</div>
+                        <div class="step-name">Evaluation</div>
+                        <div class="step-desc">Accuracy, F1, and AUC analysis</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-num">7</div>
+                        <div class="step-name">Visualization</div>
+                        <div class="step-desc">Web dashboard plots</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 📊 DATASET VIEW -->
+            <section id="view-dataset" class="tab-view">
+                <div class="view-header">
+                    <h2>NSL-KDD Traffic Analysis</h2>
+                    <p>Visual statistics and data profiles derived from training records</p>
+                </div>
+                
+                <div class="grid-2col">
+                    <div class="glass-card">
+                        <h3>Label Distribution</h3>
+                        <div class="chart-container">
+                            <canvas id="chart-labels"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h3>Top 5 Attack Classes</h3>
+                        <div class="chart-container">
+                            <canvas id="chart-attacks"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card mt-24">
+                    <h3>Protocol Breakdown</h3>
+                    <div class="chart-container-large">
+                        <canvas id="chart-protocols"></canvas>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 📈 RESULTS VIEW -->
+            <section id="view-results" class="tab-view">
+                <div class="view-header">
+                    <h2>Classical vs. Quantum Comparison</h2>
+                    <p>Benchmarked results trained on identical data splits and configurations</p>
+                </div>
+                
+                <div class="glass-card">
+                    <h3>Overall Metrics Performance</h3>
+                    <div class="chart-container-large">
+                        <canvas id="chart-metrics-comparison"></canvas>
+                    </div>
+                </div>
+                
+                <div class="grid-2col mt-24">
+                    <div class="glass-card">
+                        <h3>Model Radar Coverage</h3>
+                        <div class="chart-container">
+                            <canvas id="chart-radar"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h3>Metrics comparison table</h3>
+                        <div class="table-wrapper">
+                            <table class="premium-table">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Accuracy</th>
+                                        <th>Precision</th>
+                                        <th>Recall</th>
+                                        <th>F1-Score</th>
+                                        <th>ROC-AUC</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="model-name rf">Random Forest</td>
+                                        <td class="val-acc">76.77%</td>
+                                        <td class="val-prec">96.76%</td>
+                                        <td class="val-rec">61.23%</td>
+                                        <td class="val-f1">0.7500</td>
+                                        <td class="val-auc">0.9611</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="model-name qml">Quantum VQC</td>
+                                        <td class="val-acc">76.33%</td>
+                                        <td class="val-prec">97.06%</td>
+                                        <td class="val-rec">59.28%</td>
+                                        <td class="val-f1">0.7361</td>
+                                        <td class="val-auc">0.9351</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="notes-box">
+                            <p><strong>Note:</strong> Quantum VQC demonstrates comparable precision to Random Forest (~97%) despite having only 8 features (PCA components) mapping to 8 qubits, proving high feature-space expressivity.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 🔮 PREDICT VIEW -->
+            <section id="view-predict" class="tab-view">
+                <div class="view-header">
+                    <h2>Live Intrusion Prediction</h2>
+                    <p>Enter connection parameters to detect normal traffic or potential security threats.</p>
+                </div>
+                
+                <form id="predict-form" class="glass-card">
+                    <div class="form-grid">
+                        <div class="form-section">
+                            <h4>Connection Properties</h4>
+                            <div class="input-group">
+                                <label for="duration">Duration (seconds)</label>
+                                <input type="number" id="duration" name="duration" value="0" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="src_bytes">Source Bytes</label>
+                                <input type="number" id="src_bytes" name="src_bytes" value="150" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="dst_bytes">Destination Bytes</label>
+                                <input type="number" id="dst_bytes" name="dst_bytes" value="0" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="protocol_type">Protocol Type</label>
+                                <select id="protocol_type" name="protocol_type">
+                                    <option value="tcp" selected>TCP</option>
+                                    <option value="udp">UDP</option>
+                                    <option value="icmp">ICMP</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="service">Service Type</label>
+                                <select id="service" name="service">
+                                    <option value="http" selected>HTTP</option>
+                                    <option value="private">Private</option>
+                                    <option value="smtp">SMTP</option>
+                                    <option value="ftp_data">FTP Data</option>
+                                    <option value="domain_u">Domain U</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="flag">Connection Flag</label>
+                                <select id="flag" name="flag">
+                                    <option value="SF" selected>SF (Normal Establish)</option>
+                                    <option value="S0">S0 (Syn Sent, No Res)</option>
+                                    <option value="REJ">REJ (Rejected)</option>
+                                    <option value="RSTR">RSTR (Reset by Responder)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h4>Traffic & Count Rates</h4>
+                            <div class="input-group">
+                                <label for="count">Count (Connections to same host)</label>
+                                <input type="number" id="count" name="count" value="10" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="srv_count">Srv Count (Same service)</label>
+                                <input type="number" id="srv_count" name="srv_count" value="10" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="serror_rate">SYN Error Rate</label>
+                                <input type="range" id="serror_rate" name="serror_rate" min="0" max="1" step="0.05" value="0">
+                                <span class="range-val">0.00</span>
+                            </div>
+                            <div class="input-group">
+                                <label for="rerror_rate">REJ Error Rate</label>
+                                <input type="range" id="rerror_rate" name="rerror_rate" min="0" max="1" step="0.05" value="0">
+                                <span class="range-val">0.00</span>
+                            </div>
+                            <div class="input-group">
+                                <label for="same_srv_rate">Same Service Rate</label>
+                                <input type="range" id="same_srv_rate" name="same_srv_rate" min="0" max="1" step="0.05" value="1.0">
+                                <span class="range-val">1.00</span>
+                            </div>
+                            <div class="input-group">
+                                <label for="diff_srv_rate">Different Service Rate</label>
+                                <input type="range" id="diff_srv_rate" name="diff_srv_rate" min="0" max="1" step="0.05" value="0.0">
+                                <span class="range-val">0.00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h4>Host Attributes</h4>
+                            <div class="input-group">
+                                <label for="dst_host_count">Dst Host Count</label>
+                                <input type="number" id="dst_host_count" name="dst_host_count" value="255" min="0" max="255">
+                            </div>
+                            <div class="input-group">
+                                <label for="dst_host_srv_count">Dst Host Srv Count</label>
+                                <input type="number" id="dst_host_srv_count" name="dst_host_srv_count" value="255" min="0" max="255">
+                            </div>
+                            <div class="input-group">
+                                <label for="dst_host_same_srv_rate">Dst Host Same Srv Rate</label>
+                                <input type="range" id="dst_host_same_srv_rate" name="dst_host_same_srv_rate" min="0" max="1" step="0.05" value="1.0">
+                                <span class="range-val">1.00</span>
+                            </div>
+                            <div class="input-group">
+                                <label for="dst_host_diff_srv_rate">Dst Host Diff Srv Rate</label>
+                                <input type="range" id="dst_host_diff_srv_rate" name="dst_host_diff_srv_rate" min="0" max="1" step="0.05" value="0.0">
+                                <span class="range-val">0.00</span>
+                            </div>
+                            <div class="input-group">
+                                <label for="hot">Hot Indicators</label>
+                                <input type="number" id="hot" name="hot" value="0" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="logged_in">Logged In</label>
+                                <select id="logged_in" name="logged_in">
+                                    <option value="0">No (0)</option>
+                                    <option value="1" selected>Yes (1)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Run Model Diagnosis</button>
+                </form>
+                
+                <!-- Results wrapper -->
+                <div id="prediction-result" class="glass-card mt-24 hidden">
+                    <div class="result-layout">
+                        <div class="result-gauge-box">
+                            <div class="gauge-display">
+                                <svg viewBox="0 0 100 50" class="gauge">
+                                    <path class="gauge-bg" d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#101827" stroke-width="8"></path>
+                                    <path id="gauge-bar" class="gauge-fill" d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#10b981" stroke-width="8" stroke-dasharray="125.6" stroke-dashoffset="125.6"></path>
+                                </svg>
+                                <div id="gauge-value" class="gauge-label">0%</div>
+                            </div>
+                        </div>
+                        <div class="result-details">
+                            <div class="result-badge-container">
+                                <span id="res-badge" class="badge">NORMAL</span>
+                            </div>
+                            <h3 id="res-title">Connection Diagnostic: Normal</h3>
+                            <p id="res-desc">No anomalous properties detected in connection profile. Traffic matches baseline TCP-HTTP session characteristics.</p>
+                            <div class="prob-row mt-12">
+                                <div class="prob-stat">
+                                    <span class="label">Attack Prob:</span>
+                                    <span id="prob-val-attack" class="value text-red">0%</span>
+                                </div>
+                                <div class="prob-stat">
+                                    <span class="label">Normal Prob:</span>
+                                    <span id="prob-val-normal" class="value text-green">100%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 📖 ABOUT VIEW -->
+            <section id="view-about" class="tab-view">
+                <div class="view-header">
+                    <h2>Project Overview & Technology</h2>
+                    <p>Academic QML exploration using scikit-learn & PennyLane frameworks</p>
+                </div>
+                
+                <div class="grid-2col">
+                    <div class="glass-card">
+                        <h3>Abstract</h3>
+                        <p>High-dimensional packet classification poses critical runtime limits in energy-constrained IoT networks. This application compares classical tree ensemble networks (Random Forest Baseline) with a Variational Quantum Classifier (VQC) using a qubit mapping representation on scaled PCA feature boundaries.</p>
+                        <p>Through Angle Encoding features into RY rotation nodes across a Strongly Entangling multi-layer ring topology, we simulate expectation predictions optimized by gradient descent via PyTorch backpropagation structures.</p>
+                        
+                        <h3 class="mt-24">VQC Hardware Schema</h3>
+                        <div class="tech-grid">
+                            <div class="tech-item">
+                                <div class="tech-icon">🔌</div>
+                                <div class="tech-text">
+                                    <h5>Feature Map</h5>
+                                    <p>Angle embedding rotation nodes scaled [0, π]</p>
+                                </div>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon">🔗</div>
+                                <div class="tech-text">
+                                    <h5>Variational Ansatz</h5>
+                                    <p>Alternating single-qubit RX/RY/RZ + CNOT rings</p>
+                                </div>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon">📈</div>
+                                <div class="tech-text">
+                                    <h5>Optimization</h5>
+                                    <p>Adam gradient step (Parameter-shift rule)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h3>Deployment Details</h3>
+                        <p>This web dashboard is deployed as a serverless static site on Vercel, integrating a Python serverless function microservice to host scikit-learn models natively in the cloud.</p>
+                        
+                        <h4 class="mt-24">Development Stack</h4>
+                        <ul class="tech-list">
+                            <li><span>⚛️</span> <strong>PennyLane 0.44</strong> (Quantum Circuit simulation engine)</li>
+                            <li><span>🔥</span> <strong>PyTorch 2.x</strong> (Automatic differentiation backend)</li>
+                            <li><span>🌲</span> <strong>scikit-learn 1.3+</strong> (Random Forest + scaling parameters)</li>
+                            <li><span>🐍</span> <strong>FastAPI</strong> (API routing middleware)</li>
+                            <li><span>📊</span> <strong>Chart.js</strong> (GPU-accelerated interactive web charts)</li>
+                        </ul>
+                        
+                        <h4 class="mt-24">Research Limitations</h4>
+                        <ul class="bullets">
+                            <li>Runs on standard classical state-vector simulators (no real quantum computers used in production demo).</li>
+                            <li>QML circuit requires PCA feature reduction down to 8 dimensions to maintain reasonable memory usage (scales exponentially O(2^N)).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+    </div>
+
+    <!-- App Script -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Ignore raw datasets
+data/
+data/raw/
+data/processed/
+
+# Ignore local source code not needed by serverless function
+src/
+main.py
+app.py
+requirements-dev.txt
+New Text Document.txt
+README.md
+
+# Ignore streamlit configs
+.streamlit/
+
+# Ignore python caches and logs
+__pycache__/
+*.pyc
+*.log
+.venv/
+venv/
+env/
